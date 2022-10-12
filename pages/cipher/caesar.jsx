@@ -7,7 +7,7 @@ import { Tabs, Spinner, TextInput, Label, Badge } from "flowbite-react";
 import axios from "axios";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import { ciphers } from "../../data";
+import { ciphers, URL } from "../../data";
 const Caesar = () => {
   const [content, setContent] = useState("");
   const [keySize, setKeySize] = useState(3);
@@ -18,9 +18,7 @@ const Caesar = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:3000/api/cipher/caesar`
-        );
+        const { data } = await axios.get(`${URL}/api/cipher/caesar`);
         const cipher = ciphers.find((cip) => cip.slug === "caesar");
 
         const mdxSource = await serialize(data.content);
@@ -35,7 +33,7 @@ const Caesar = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `/api/cipher/${page.slug}/encrypt/${content}?key=${keySize}`
+        `${URL}/api/cipher/${page.slug}/encrypt/${content}?key=${keySize}`
       );
       setResult(data.result);
       setLoading(false);
@@ -48,7 +46,7 @@ const Caesar = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `/api/cipher/${page.slug}/decrypt/${content}?key=${keySize}`
+        `${URL}/api/cipher/${page.slug}/decrypt/${content}?key=${keySize}`
       );
       setResult(data.result);
       setLoading(false);

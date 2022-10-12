@@ -7,7 +7,7 @@ import { Tabs, Spinner, TextInput, Label } from "flowbite-react";
 import axios from "axios";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import { ciphers } from "../../data";
+import { ciphers, URL } from "../../data";
 import {
   alphabet,
   generateKeyTable,
@@ -24,7 +24,7 @@ const Homophonic = () => {
     const loadData = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3000/api/cipher/homophonic-substitution`
+          `${URL}/api/cipher/homophonic-substitution`
         );
         const cipher = ciphers.find(
           (cip) => cip.slug === "homophonic-substitution"
@@ -45,7 +45,7 @@ const Homophonic = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `/api/cipher/${page.slug}/encrypt/${content}`,
+        `${URL}/api/cipher/${page.slug}/encrypt/${content}`,
         { params: { key: key } }
       );
       setResult(data.result);
@@ -59,7 +59,7 @@ const Homophonic = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `/api/cipher/${page.slug}/decrypt/${content}?key=${keySize}`
+        `${URL}/api/cipher/${page.slug}/decrypt/${content}?key=${keySize}`
       );
       setResult(data.result);
       setLoading(false);

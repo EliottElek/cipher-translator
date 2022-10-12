@@ -3,11 +3,11 @@ import Head from "next/head";
 import Button from "../../components/Button";
 import TextArea from "../../components/TextArea";
 import Layout from "../../layout";
-import { Tabs, Spinner, TextInput, Alert } from "flowbite-react";
+import { Tabs, Spinner, Alert } from "flowbite-react";
 import axios from "axios";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import { ciphers } from "../../data";
+import { ciphers, URL } from "../../data";
 import {
   generateRandomAlphabet,
   keyCheck,
@@ -26,7 +26,7 @@ const MonoAlphabetic = () => {
     const loadData = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3000/api/cipher/mono-alphabetic-substitution`
+          `${URL}/api/cipher/mono-alphabetic-substitution`
         );
         const cipher = ciphers.find(
           (cip) => cip.slug === "mono-alphabetic-substitution"
@@ -57,7 +57,7 @@ const MonoAlphabetic = () => {
 
     try {
       const { data } = await axios.get(
-        `/api/cipher/${page.slug}/encrypt/${content}?key=${key}`
+        `${URL}/api/cipher/${page.slug}/encrypt/${content}?key=${key}`
       );
       setResult(data.result);
       setLoading(false);
@@ -79,7 +79,7 @@ const MonoAlphabetic = () => {
     setAlertMessage(null);
     try {
       const { data } = await axios.get(
-        `/api/cipher/${page.slug}/decrypt/${content}?key=${key}`
+        `${URL}/api/cipher/${page.slug}/decrypt/${content}?key=${key}`
       );
       setResult(data.result);
       setLoading(false);
