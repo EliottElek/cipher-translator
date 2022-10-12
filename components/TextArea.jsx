@@ -12,14 +12,14 @@ const TextArea = (props) => {
           ></textarea>
         </div>
         <div className="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">
-          <div className="flex pl-0 space-x-1 sm:pl-2 items-center">
+          <div className="flex pl-0 gap-2 sm:pl-2 items-center">
             <Button
               outline={true}
               size="sm"
               gradientDuoTone="purpleToBlue"
               disabled
             >
-              Copy to clipboard
+              Copy
             </Button>
             <Button
               disabled={props.value === "" && true}

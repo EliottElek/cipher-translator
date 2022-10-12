@@ -1601,10 +1601,10 @@ flatted@^3.1.0:
   resolved "https://registry.npmjs.org/flatted/-/flatted-3.2.7.tgz"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
-flowbite-react@^0.1.12:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/flowbite-react/-/flowbite-react-0.1.12.tgz#347c657af8a128ad351cd5eb635a184b4d7b465f"
-  integrity sha512-tbozCEd/FshY83oYl43WvwC4xtStEdNz5UH9i//Odd1Cu3a5lqC99VzJIuTyPMB7OLDaIWoLi+mHFLmN8af5lA==
+flowbite-react@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/flowbite-react/-/flowbite-react-0.2.0.tgz#ccfd3bb69616cd0cd97f397c555cadc1e856365a"
+  integrity sha512-jmR71mDlY878sL0Zi1Rp9gPz9Mjcpj8OxWjj4sqZ1aQOTNGSU1GIPpDdD48s49361xj8DRocuuRq96C0zsXwJw==
   dependencies:
     "@floating-ui/react-dom" "^1.0.0"
     "@floating-ui/react-dom-interactions" "^0.9.1"

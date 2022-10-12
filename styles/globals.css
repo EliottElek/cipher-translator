@@ -16,6 +16,7 @@ a {
 
 * {
   box-sizing: border-box;
+  z-index: 0;
 }
 
 @media (prefers-color-scheme: dark) {

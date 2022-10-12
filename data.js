@@ -20,10 +20,11 @@ export const ciphers = [
   },
   {
     name: "Homophonic substitution",
+    slug: "homophonic-substitution",
     href: "/cipher/homophonic-substitution",
     difficulty: "Medium",
     difficultyColor: "warning",
-    available: false,
+    available: true,
   },
   {
     name: "Polygram substitution",
@@ -56,5 +57,5 @@ export const ciphers = [
 ];
 export const paths = [
   { params: { cipher: "caesar" } },
-  { params: { cipher: "mono-alphabetic-substitution" } },
+  { params: { cipher: "polyaplphabetic-substitution" } },
 ];

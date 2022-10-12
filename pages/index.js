@@ -6,19 +6,18 @@ import { ciphers } from "../data";
 import Link from "next/link";
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <title>Cypher translator</title>
         <meta name="description" content="Cypher translator" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Layout title="Home">
-        <div className="grid z-0">
-          {ciphers.map((card) => (
-            <Link href={card.available ? card.href : "#"}>
+      <Layout>
+        <div className="grid">
+          {ciphers.map((card, i) => (
+            <Link key={i} href={card.available ? card.href : "#"}>
               <Card href={card.available && card.href} horizontal={true}>
-                <div className="relative h-full w-full z-0">
+                <div className="relative h-full w-full">
                   <h5
                     className={[
                       "text-2xl font-bold tracking-tight text-gray-800 dark:text-white flex items-center justify-between",
@@ -52,6 +51,6 @@ export default function Home() {
           ))}
         </div>
       </Layout>
-    </div>
+    </>
   );
 }

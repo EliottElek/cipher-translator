@@ -20,7 +20,7 @@ export default function Example({ children, title, page }) {
       <div className="min-h-full dark:bg-gray-900">
         <Disclosure
           as="nav"
-          className="bg-white dark:bg-gray-900 border-b border-b-slate-50 dark:border-b-slate-700 sticky top-0 left-0"
+          className="bg-white !z-50 dark:bg-gray-900 border-b border-b-slate-50 dark:border-b-slate-700 sticky top-0 left-0"
         >
           {({ open }) => (
             <>
@@ -68,7 +68,7 @@ export default function Example({ children, title, page }) {
                   </div>
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
-                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md dark:bg-gray-800 p-2 bg-zinc-100 hover:bg-zinc-100 text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white focus:outline-none">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XMarkIcon
@@ -85,7 +85,6 @@ export default function Example({ children, title, page }) {
                   </div>
                 </div>
               </div>
-
               <Disclosure.Panel className="md:hidden">
                 <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
                   {ciphers.map((item) => (
@@ -96,7 +95,7 @@ export default function Example({ children, title, page }) {
                       className={classNames(
                         item.current
                           ? "bg-gray-900 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          : "dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white hover:text-gray-800 text-gray-500",
                         "block px-3 py-2 rounded-md text-base font-medium"
                       )}
                       aria-current={item.current ? "page" : undefined}
@@ -142,7 +141,7 @@ export default function Example({ children, title, page }) {
           </div>
         </header>
         <main>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 px-4">
             {children}
           </div>
         </main>
