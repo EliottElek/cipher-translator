@@ -43,14 +43,12 @@ const Homophonic = () => {
   const handleEncrypt = async () => {
     if (content === "") return;
     setLoading(true);
-    console.log(key);
     try {
       const { data } = await axios.get(
         `/api/cipher/${page.slug}/encrypt/${content}`,
         { params: { key: key } }
       );
       setResult(data.result);
-      console.log(data);
       setLoading(false);
     } catch (e) {
       setLoading(false);
