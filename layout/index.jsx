@@ -7,20 +7,24 @@ import Footer from "./Footer";
 import useDarkMode from "../utils/hooks/useDarkMode";
 import { BsSun } from "react-icons/bs";
 import { FiMoon } from "react-icons/fi";
-import { Badge } from "flowbite-react";
+import { Badge, Breadcrumb } from "flowbite-react";
+import { HomeIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Example({ children, title, page }) {
   const [colorTheme, setTheme] = useDarkMode();
-
+  const { asPath } = useRouter();
+  const links = asPath.split("/");
+  links.shift();
   return (
     <>
       <div className="min-h-full dark:bg-gray-900">
         <Disclosure
           as="nav"
-          className="bg-white !z-50 dark:bg-gray-900 border-b border-b-slate-50 dark:border-b-slate-700 sticky top-0 left-0"
+          className="bg-white !z-50 dark:bg-gray-800 border-b border-b-slate-50 dark:border-b-slate-700 sticky top-0 left-0"
         >
           {({ open }) => (
             <>
@@ -30,11 +34,11 @@ export default function Example({ children, title, page }) {
                     <div className="flex-shrink-0">
                       <Link href="/">
                         <div className="flex items-center cursor-pointer">
-                          <img
+                          {/* <img
                             src="https://flowbite.com/docs/images/logo.svg"
                             class="mr-3 h-8"
                             alt="FlowBite Logo"
-                          />
+                          /> */}
                           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                             Ciphers
                           </span>
@@ -68,7 +72,7 @@ export default function Example({ children, title, page }) {
                   </div>
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
-                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md dark:bg-gray-800 p-2 bg-zinc-100 hover:bg-zinc-100 text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white focus:outline-none">
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md dark:bg-gray-700 p-2 bg-zinc-100 hover:bg-zinc-100 text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white focus:outline-none">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XMarkIcon
@@ -130,14 +134,28 @@ export default function Example({ children, title, page }) {
 
         <header>
           <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl flex gap-4 items-center font-bold tracking-tight text-gray-900 dark:text-slate-50 pt-3">
-              {title}
-              {page && (
-                <Badge color={page.difficultyColor} size="sm">
-                  {page.difficulty}
-                </Badge>
-              )}
-            </h1>
+            {links.length > 1 && (
+              <>
+                <Breadcrumb aria-label="Default breadcrumb example">
+                  <Breadcrumb.Item href="/" icon={HomeIcon}>
+                    Home
+                  </Breadcrumb.Item>
+                  {links.map((link, i) => (
+                    <Breadcrumb.Item key={i} href={`/${link}`}>
+                      {link}
+                    </Breadcrumb.Item>
+                  ))}
+                </Breadcrumb>
+                <h1 className="text-3xl flex gap-4 items-center font-bold tracking-tight text-gray-900 dark:text-slate-50 pt-3">
+                  {title}
+                  {page && (
+                    <Badge color={page.difficultyColor} size="sm">
+                      {page.difficulty}
+                    </Badge>
+                  )}
+                </h1>
+              </>
+            )}
           </div>
         </header>
         <main>

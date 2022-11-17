@@ -60,7 +60,7 @@ export const paths = [
   { params: { cipher: "polyaplphabetic-substitution" } },
 ];
 
-const prod = true;
+const prod = !true;
 export const URL = prod
   ? "https://ciphers-translator.netlify.app"
   : "http://localhost:3000";

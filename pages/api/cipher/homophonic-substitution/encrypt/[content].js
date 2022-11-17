@@ -2,7 +2,12 @@
 
 import { homophonicCipherEncrypt } from "../../../../../utils/ciphers/homophonic-substitution";
 export default function handler(req, res) {
-  const { content } = req.query;
-  const result = homophonicCipherEncrypt(content);
-  res.status(200).json({ result: result, params: req.query });
+  const { content, word } = req.query;
+  //removing content and word from key
+  const key = req.query;
+  delete key.content;
+  delete key.word;
+
+  const result = homophonicCipherEncrypt(content, key, word);
+  res.status(200).json({ result: result, key: key });
 }
